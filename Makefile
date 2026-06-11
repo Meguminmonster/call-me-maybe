@@ -12,18 +12,22 @@
 
 .PHONY: install run run-debug clean lint
 
+# Variables por defecto para que 'make run' funcione directamente
+FUNCTIONS_DEF = data/input/functions_definition.json
+INPUT_FILE = data/input/function_calling_tests.json
+OUTPUT_FILE = data/output/function_calls.json
+
 install:
 	# Instala dependencias respetando el uv.lock
 	uv sync
 
 run:
-	# Ejecución estándar
-	uv run python -m src
+	# Ejecución estándar con los argumentos obligatorios
+	uv run python -m src -f $(FUNCTIONS_DEF) -i $(INPUT_FILE) -o $(OUTPUT_FILE)
 
 run-debug:
-	# Ejecuta usando el depurador estándar de Python (pdb)
-	# (Si prefieres gestionar el debug dentro de tu código, cámbialo a: uv run python -m src --debug)
-	uv run python -m pdb -m src
+	# Ejecuta usando el depurador estándar de Python (pdb) con los argumentos obligatorios
+	uv run python -m pdb -m src -f $(FUNCTIONS_DEF) -i $(INPUT_FILE) -o $(OUTPUT_FILE)
 
 clean:
 	# Limpieza de caché y archivos temporales

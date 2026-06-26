@@ -1,12 +1,15 @@
 __author__ = 'jpedra-v'
 __version__ = '1.0.0'
 
-# LLM SDK
+# LLM SDK (Importación limpia y oficial desde el entorno de uv)
 from llm_sdk import Small_LLM_Model  # type: ignore
 
 # Parsing (Modelos de Pydantic y funciones agrupados por archivo)
 from src.parsing.arguments import get_arguments
-from src.parsing.functions_definition import FunctionDefinition, get_functions_definition
+from src.parsing.functions_definition import (
+    FunctionDefinition,
+    get_functions_definition
+)
 from src.parsing.prompts import Prompt, get_prompts
 
 # Objects

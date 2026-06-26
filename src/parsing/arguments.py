@@ -12,29 +12,29 @@ def get_arguments() -> argparse.Namespace:
         required=True,
         help="Ruta al archivo JSON con las definiciones de las funciones."
     )
-    
+
     parser.add_argument(
         "-i", "--input",
         required=True,
-        help="Ruta al archivo JSON de entrada que contiene los prompts de prueba."
+        help="Ruta al archivo JSON que contiene los prompts de prueba."
     )
-    
+
     parser.add_argument(
         "-m", "--model",
         default="small-llm",
-        help="Nombre o identificador del modelo LLM a cargar (Por defecto: small-llm)."
+        help="Nombre o identificador del modelo LLM a cargar"
     )
-    
+
     parser.add_argument(
         "-d", "--device",
         default="cpu",
-        help="Dispositivo donde correr el modelo: 'cpu', 'cuda', 'mps' (Por defecto: cpu)."
+        help="Dispositivo donde correr el modelo."
     )
-    
+
     parser.add_argument(
         "-o", "--output",
         required=True,
-        help="Ruta al archivo JSON de salida donde se guardarán los resultados."
+        help="Ruta al archivo JSON donde se guardarán los resultados."
     )
 
     return parser.parse_args()

@@ -23,11 +23,11 @@ class FunctionDefinition(BaseModel):
 
 
 def get_functions_definition(file_path: str) -> List[FunctionDefinition]:
-    """Lee el catálogo de funciones y devuelve una lista de FunctionDefinition."""
+    """Devuelve una lista de FunctionDefinition."""
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-        
+
     if not isinstance(data, list):
-        raise ValueError("El archivo de definición de funciones debe ser una lista JSON.")
-        
+        raise ValueError("El archivo debe ser una lista JSON.")
+
     return [FunctionDefinition(**item) for item in data]

@@ -37,7 +37,7 @@ def get_prompts(prompt_file_path: str) -> List[Prompt]:
     except json.JSONDecodeError:
         raise PromptFileError('Your prompts file contain invalid json.')
     except PermissionError:
-        raise PromptFileError('Not enough permissions to open your prompts file.')
+        raise PromptFileError('Lacking perms to open your prompts file.')
     except Exception:
         raise PromptFileError("Unable to use your prompts file. Please make "
                               "sure that your file respects the "

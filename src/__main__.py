@@ -17,12 +17,14 @@ def main() -> None:
     try:
         args = get_arguments()
     except Exception as e:
-        print(f"Invalid arguments. Please use --help to get help. ({e})", file=sys.stderr)
+        print(f"Invalid arguments. {e}", file=sys.stderr)
         sys.exit(1)
 
     # Carga de definiciones de funciones y prompts
     try:
-        functions_definition = get_functions_definition(args.functions_definition)
+        functions_definition = get_functions_definition(
+            args.functions_definition
+        )
         prompts = get_prompts(args.input)
     except Exception as e:
         print(f"Error loading input files: {e}", file=sys.stderr)
@@ -47,7 +49,7 @@ def main() -> None:
         with open(args.output, "w", encoding="utf-8") as output_file:
             json.dump(output, output_file, indent=4, ensure_ascii=False)
     except Exception as e:
-        print(f"Could not write to the json output. More details: {e}", file=sys.stderr)
+        print(f"Could not write to the json output. {e}", file=sys.stderr)
         sys.exit(1)
 
     return None
